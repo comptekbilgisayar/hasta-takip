@@ -102,22 +102,28 @@ function generatePDF(visit: any, patient: any) {
       </div>
 
       {/* LIST */}
-      {visits.map((v) => (
-        <div
-          key={v.id}
-          style={{ padding: 10, border: '1px solid #ddd', marginBottom: 10 }}
-        >
-          📅 {new Date(v.visit_date).toLocaleString()}
-          <div>🤒 {v.complaint}</div>
-          <div>🧠 {v.diagnosis}</div>
-        </div>
-      ))}
-      <button
-  onClick={() => generatePDF(v, patients.find(p => p.id === v.patient_id))}
-  style={{ marginTop: 10 }}
->
-  📄 PDF Oluştur
-</button>
+     {visits.map((v) => (
+  <div key={v.id} style={{ padding: 10, border: '1px solid #ddd' }}>
+
+    📅 {new Date(v.visit_date).toLocaleString()}
+    <p>{v.complaint}</p>
+    <p>{v.diagnosis}</p>
+
+    {/* ✅ PDF BUTONU BURADA */}
+    <button
+      onClick={() =>
+        generatePDF(
+          v,
+          patients.find(p => p.id === v.patient_id)
+        )
+      }
+      style={{ marginTop: 10 }}
+    >
+      📄 PDF Oluştur
+    </button>
+
+  </div>
+))}
     </div>
   )
 }

@@ -11,6 +11,7 @@ export default function VisitsPage() {
   const [complaint, setComplaint] = useState('')
   const [diagnosis, setDiagnosis] = useState('')
 
+
   useEffect(() => {
     loadVisits()
     loadPatients()
